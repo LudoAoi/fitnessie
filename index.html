@@ -11,11 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/data.js" type="module"></script>
+    <script src="/app.js" type="module"></script>
 </head>
 <body>
 
-    <!-- Onboarding Modal -->
     <div id="onboarding-modal" class="modal-overlay">
         <div class="modal-content p-6 md:p-8">
             <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600" data-action="close-modal" data-modal-id="onboarding-modal">
@@ -199,7 +200,6 @@
         </div>
     </div>
     
-    <!-- MODALS -->
     <div id="recipe-modal" class="modal-overlay">
         <div class="modal-content p-6 md:p-8">
              <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600" data-action="close-modal" data-modal-id="recipe-modal">
