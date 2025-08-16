@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EvolveFit</title>
+    <title>FitNessie</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -15,14 +15,13 @@
 </head>
 <body>
 
-    <!-- Onboarding Modal -->
     <div id="onboarding-modal" class="modal-overlay">
         <div class="modal-content p-6 md:p-8">
             <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600" data-action="close-modal" data-modal-id="onboarding-modal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             <div id="onboarding-header" class="mb-6 text-center">
-                <h2 class="text-3xl font-extrabold mb-2">Welcome to EvolveFit!</h2>
+                <h2 class="text-3xl font-extrabold mb-2">Welcome to FitNessie!</h2>
                 <p class="text-gray-500">Let's build your personalized fitness plan.</p>
             </div>
             
@@ -168,7 +167,7 @@
     <header class="app-header fixed top-0 left-0 right-0">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-20">
-                <div class="text-2xl font-extrabold tracking-tighter text-gray-800">EvolveFit</div>
+                <div class="text-2xl font-extrabold tracking-tighter text-gray-800">FitNessie</div>
                 <div class="flex-1 flex justify-center items-center overflow-x-auto">
                     <nav class="flex space-x-1 md:space-x-2">
                         <button class="nav-btn px-3 py-2" data-action="open-tab" data-tab-id="monday">Mon</button>
@@ -199,7 +198,6 @@
         </div>
     </div>
     
-    <!-- MODALS -->
     <div id="recipe-modal" class="modal-overlay">
         <div class="modal-content p-6 md:p-8">
              <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600" data-action="close-modal" data-modal-id="recipe-modal">
@@ -375,7 +373,6 @@
         </div>
     </div>
 
-    <script src="data.js" type="module"></script>
-    <script src="app.js" type="module"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>

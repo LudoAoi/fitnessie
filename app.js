@@ -7,8 +7,9 @@ let timerInterval = null;
 let currentRecipeForModal = null;
 let currentServings = 1;
 
-// Import data from data.js
-import { equipmentPriority, exerciseLibrary, recipeLibrary, recoveryRoutineLibrary, icons, contraindications } from './data.js';
+// Import data from exercises.js and nutrition.js
+import { equipmentPriority, exerciseLibrary, recoveryRoutineLibrary, icons, contraindications } from './exercises.js';
+import { recipeLibrary } from './nutrition.js';
 
 // --- SECTION 3: STATE MANAGEMENT ---
 function saveState() {
@@ -18,11 +19,11 @@ function saveState() {
         console.error("Failed to save state:", e);
     }
 }
-function loadState() { 
-    const p = localStorage.getItem('fitnessAppPlan_v18'); 
-    if(p){ 
+function loadState() {
+    const p = localStorage.getItem('fitnessAppPlan_v18');
+    if(p){
         try {
-            workoutPlan = JSON.parse(p); 
+            workoutPlan = JSON.parse(p);
             if (workoutPlan && workoutPlan.userProfile && workoutPlan.days) {
                 return true;
             }
@@ -31,8 +32,8 @@ function loadState() {
             localStorage.removeItem('fitnessAppPlan_v18');
             return false;
         }
-    } 
-    return false; 
+    }
+    return false;
 }
 
 // --- SECTION 4: ONBOARDING & PLAN GENERATION ---
@@ -58,10 +59,10 @@ function handleOnboardingSubmit(e) {
 }
 
 function generateInitialPlan(userData) {
-    const plan = { 
-        userProfile: { ...userData, badges: [] }, 
-        week: 1, 
-        days: {}, 
+    const plan = {
+        userProfile: { ...userData, badges: [] },
+        week: 1,
+        days: {},
         photos: { first: null, last: null },
         measurements: [],
         history: [],
@@ -76,7 +77,7 @@ function analyzeWeeklyPerformance(planHistory, currentBlockLifts, week) {
     if (!planHistory || week <= 1) return deloadExercises;
 
     const lastWeekHistory = planHistory.filter(log => log.week === week - 1);
-    
+
     Object.values(currentBlockLifts).forEach(liftId => {
         const liftLogs = lastWeekHistory.filter(log => log.id === liftId);
         if (liftLogs.length === 0) return;
@@ -175,7 +176,7 @@ function generateWeeklyBasket(userProfile) {
 
     if (availableRecipes.length < 10) {
         console.warn("Low recipe variety for this diet. Skipping weekly basket for more options.");
-        return []; 
+        return [];
     }
 
     const proteinSources = ['chicken', 'beef', 'salmon', 'tuna', 'cod', 'egg', 'tofu', 'lentil', 'chickpea', 'black bean'];
@@ -235,7 +236,7 @@ function generateDynamicMealPlan(userData, weeklyIngredientBasket, checkinData =
     let candidatePool = baseCandidatePool;
 
     if (weeklyIngredientBasket && weeklyIngredientBasket.length > 0) {
-        let basketFilteredPool = baseCandidatePool.filter(recipe => 
+        let basketFilteredPool = baseCandidatePool.filter(recipe =>
             recipe.core_ingredients && recipe.core_ingredients.every(ing => weeklyIngredientBasket.includes(ing))
         );
 
