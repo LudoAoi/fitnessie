@@ -6,6 +6,7 @@ let currentOnboardingStep = 1;
 let timerInterval = null;
 let currentRecipeForModal = null;
 let currentServings = 1;
+
 // Import data from data.js
 import { equipmentPriority, exerciseLibrary, recipeLibrary, recoveryRoutineLibrary, icons, contraindications } from './data.js';
 
@@ -39,7 +40,6 @@ function handleOnboardingSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData.entries());
-    // Correctly gather all optional fields
     userData.equipment = formData.getAll('equipment');
     userData.limitations = formData.getAll('limitations');
     userData.allergies = formData.getAll('allergies');
@@ -375,7 +375,7 @@ function getBestExerciseFor(muscleGroup, userData, isAccessory = false, isFocus 
     let allCandidates = [];
     Object.values(groupExercises).flat().forEach(ex => {
         const environmentMatch = ex.environment === 'all' || ex.environment === training_environment;
-        const equipmentMatch = ex.requires.every(req => equipment.includes(req));
+        const equipmentMatch = ex.requires.every(req => userProfile.equipment.includes(req));
         const difficultyMatch = allowedDifficulties.includes(ex.difficulty);
 
         if (environmentMatch && equipmentMatch && difficultyMatch) {
