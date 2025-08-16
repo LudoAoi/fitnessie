@@ -755,3 +755,8 @@ export const exerciseLibrary = {
             shoulders: ['ex_overhead_press', 'ex_db_incline_press', 'ex_db_shoulder_press'],
             lower_back: ['ex_bent_over_row', 'ex_good_mornings', 'ex_barbell_rdl']
         };
+
+export const recipeLibrary = recipeLibrary;
+export const recoveryRoutineLibrary = recoveryRoutineLibrary;
+export const icons = icons;
+export const contraindications = contraindications;
