@@ -1,6 +1,3 @@
-// Import data from data.js
-import { equipmentPriority, exerciseLibrary, recipeLibrary, recoveryRoutineLibrary, icons, contraindications } from './data.js';
-
 // --- SECTION 1: STATE & CONFIGURATION ---
 let workoutPlan = {};
 let currentTab;
@@ -9,9 +6,17 @@ let currentOnboardingStep = 1;
 let timerInterval = null;
 let currentRecipeForModal = null;
 let currentServings = 1;
+// Import data from data.js
+import { equipmentPriority, exerciseLibrary, recipeLibrary, recoveryRoutineLibrary, icons, contraindications } from './data.js';
 
 // --- SECTION 3: STATE MANAGEMENT ---
-function saveState() { try { localStorage.setItem('fitnessAppPlan_v18', JSON.stringify(workoutPlan)); } catch (e) { console.error("Failed to save state:", e); } }
+function saveState() {
+    try {
+        localStorage.setItem('fitnessAppPlan_v18', JSON.stringify(workoutPlan));
+    } catch (e) {
+        console.error("Failed to save state:", e);
+    }
+}
 function loadState() { 
     const p = localStorage.getItem('fitnessAppPlan_v18'); 
     if(p){ 
@@ -1512,6 +1517,3 @@ function initializeApp() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeApp);
-</script>
-</body>
-</html>
